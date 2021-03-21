@@ -1,3 +1,4 @@
+# 动态规划1： 零钱分配
 def coinChange(coins, amount):
 # 数组大小为 amount + 1，初始值也为 amount + 1
 # 因为总的零钱个数不会超过amount,所以初始化amount + 1即可
@@ -20,4 +21,25 @@ def coinChange(coins, amount):
     else:
         return dp[amount]
 
-print(coinChange([2],4))
+# print(coinChange([2],4))
+# expected: 2
+
+# 动态规划2： 最长上升子序列/梅花桩
+# 输入: [10,9,2,5,3,7,101,18]
+# 输出: 4
+# 解释: 最长的上升子序列是 [2,3,7,101]，它的长度是 4。
+def lengthoflis(l:list):
+    if not list:
+        return 0
+    dp = [1 for _ in range(len(l))]   # 初始化dp数组
+    dp[0] = 1
+    print(dp)
+    for i in range(len(l)):
+        for j in range(i):
+            if l[j] >= l[i]:
+                continue
+            dp[i] = max(dp[i], dp[j] + 1)
+    print(dp)
+
+# lengthoflis([2,5,1,5,4,5])
+# expected result : 3
