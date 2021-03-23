@@ -1,3 +1,11 @@
+'''
+满二叉树 （Full Binary Tree): 每个节点都只有0或者2个子节点
+完全二叉树 (Complete Binary Tree): 除了最后一层，所有的level都完全充满，
+最后一层需要尽量从左向右排，二叉堆就是一种完全二叉树
+完美二叉树 （Perfect Binary Tree): 在满二叉树的基础上，所有level都被充满，完美二叉树即是满二叉树，
+又是完全二叉树
+
+'''
 # Implementing the representation of a tree as a class with nodes and references
 
 class BinaryTree(object):
