@@ -1,4 +1,4 @@
-# 动态规划1： 零钱分配
+# # 动态规划1： 零钱分配
 def coinChange(coins, amount):
 # 数组大小为 amount + 1，初始值也为 amount + 1
 # 因为总的零钱个数不会超过amount,所以初始化amount + 1即可
@@ -44,3 +44,61 @@ def lengthoflis(l:list):
 # lengthoflis([2,5,1,5,4,5])
 # expected result : 3
 
+
+'''
+动态规划3：合唱队 HJ24 牛客网 华为机试
+
+这个题其实就是双向版本的最大上升子序列问题，需要从左往右排一此，再从右往左排一次
+'''
+
+def foo24(l:list):
+    dp = [1 for _ in range(len(l))]
+    for i in range(len(l)):
+        for j in range(i):
+            if l[j] < l[i] and dp[i] < dp[j] + 1:   # 优化了这段代码，运行速度比之前快了一些，不需要用到max了
+                dp[i] = dp[j] + 1      # 算法复杂度任为O（n^2)
+    return dp
+
+while 1:
+    try:
+        n = int(input())
+        lis = list(map(int,input().split()))
+        a = foo24(lis)
+        b = foo24(lis[::-1])[::-1]
+        res = [sum(i)-1 for i in zip(a,b)]
+        print(n - max(res))
+    except:
+        break
+
+
+'''
+动态规划4 ： 最长上升子序列的优化解法
+以下是一种再次优化过的方法，大大降低了算法复杂度
+该方法的算法复杂度为O（nLog n）
+
+bisect module 
+'''
+
+import bisect
+def foo24new(lists):
+    list_num = []
+    list_max = []
+    for i in lists:
+        local = bisect.bisect_left(list_num, i)   # bisect 会返回对有序数组a插入i时，i所在的位置（维持排序，如果重复值，排在靠左）
+        if local == len(list_num):
+            list_num.append(i)
+            list_max.append(local+1)
+        else:
+            list_num[local] = i         # 不一定是准确的上升序列 但是长度会一直对应当前的最长上升序列
+            list_max.append(local+1)    # dp数组
+    return list_max
+
+while 1:
+    try:
+        n = int(input())
+        lis = list(map(int, input().split()))
+        a = foo24new(lis)
+        b = foo24new(lis[::-1])[::-1]
+        print(n - max(map(sum, zip(a, b))) + 1)
+    except:
+        break
