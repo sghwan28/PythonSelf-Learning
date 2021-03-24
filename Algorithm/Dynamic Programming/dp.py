@@ -59,16 +59,16 @@ def foo24(l:list):
                 dp[i] = dp[j] + 1      # 算法复杂度任为O（n^2)
     return dp
 
-while 1:
-    try:
-        n = int(input())
-        lis = list(map(int,input().split()))
-        a = foo24(lis)
-        b = foo24(lis[::-1])[::-1]
-        res = [sum(i)-1 for i in zip(a,b)]
-        print(n - max(res))
-    except:
-        break
+# while 1:
+#     try:
+#         n = int(input())
+#         lis = list(map(int,input().split()))
+#         a = foo24(lis)
+#         b = foo24(lis[::-1])[::-1]
+#         res = [sum(i)-1 for i in zip(a,b)]
+#         print(n - max(res))
+#     except:
+#         break
 
 
 '''
@@ -93,12 +93,12 @@ def foo24new(lists):
             list_max.append(local+1)    # dp数组
     return list_max
 
-while 1:
-    try:
-        n = int(input())
-        lis = list(map(int, input().split()))
-        a = foo24new(lis)
-        b = foo24new(lis[::-1])[::-1]
-        print(n - max(map(sum, zip(a, b))) + 1)
-    except:
-        break
+# while 1:
+#     try:
+#         n = int(input())
+#         lis = list(map(int, input().split()))
+#         a = foo24new(lis)
+#         b = foo24new(lis[::-1])[::-1]
+#         print(n - max(map(sum, zip(a, b))) + 1)
+#     except:
+#         break
