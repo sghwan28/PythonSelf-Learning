@@ -99,11 +99,107 @@ def date_time(time: str) -> str:
 #     assert date_time("20.11.1990 03:55") == "20 November 1990 year 3 hours 55 minutes", "Somebody was born"
 #     print("Coding complete? Click 'Check' to earn cool rewards!")
 
+'''
+Morse Decoder
+'''
+MORSE = {'.-':    'a', '-...':  'b', '-.-.':  'c',
+         '-..':   'd', '.':     'e', '..-.':  'f',
+         '--.':   'g', '....':  'h', '..':    'i',
+         '.---':  'j', '-.-':   'k', '.-..':  'l',
+         '--':    'm', '-.':    'n', '---':   'o',
+         '.--.':  'p', '--.-':  'q', '.-.':   'r',
+         '...':   's', '-':     't', '..-':   'u',
+         '...-':  'v', '.--':   'w', '-..-':  'x',
+         '-.--':  'y', '--..':  'z', '-----': '0',
+         '.----': '1', '..---': '2', '...--': '3',
+         '....-': '4', '.....': '5', '-....': '6',
+         '--...': '7', '---..': '8', '----.': '9'
+        }
+
+def morse_decoder(code):
+    words = code.split('   ')
+    len1 = len(words)
+    s = 0
+    res =[]
+    while s < len1:
+        for i in words:
+            b = i.split(' ')
+            c = [MORSE[i] for i in b]
+            res.append(''.join(c))
+            s += 1
+    f = ' '.join(res)
+    if f[0].islower():
+        f = f[0].upper() + f[1:]
+    return f
+
+
+# if __name__ == '__main__':
+#     print("Example:")
+#     print(morse_decoder('... --- ...'))
+#
+#     #These "asserts" using only for self-checking and not necessary for auto-testing
+#     assert morse_decoder("... --- -- .   - . -..- -") == "Some text"
+#     assert morse_decoder("..--- ----- .---- ---..") == "2018"
+#     assert morse_decoder(".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--") == "It was a good day"
+#     print("Coding complete? Click 'Check' to earn cool rewards!")
 
 
 
+'''
+Pawn Brotherhood 
+'''
+l1 = list('abcdefgh')
+l2 = [1,2,3,4,5,6,7,8]
+d1 = dict(zip(l1,l2))
+
+def safe_pawns(pawns: set) -> int:
+
+    def foo(s):
+        char = s[0]
+        return (d1[char], int(s[1]))
+
+    newlist = list(map(foo, pawns))
+    safe = 0
+    for i in pawns:
+        cor = foo(i)
+        if (cor[0]-1,cor[1]-1) in newlist or (cor[0]+1,cor[1]-1) in newlist:
+            safe += 1
+    return safe
 
 
+# if __name__ == '__main__':
+#     # These "asserts" using only for self-checking and not necessary for auto-testing
+#     assert safe_pawns({"b4", "d4", "f4", "c3", "e3", "g5", "d2"}) == 6
+#     assert safe_pawns({"b4", "c4", "d4", "e4", "f4", "g4", "e5"}) == 1
+#     print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
 
 
+'''
+sun angle
+'''
+
+from datetime import datetime
+
+def sun_angle(time):
+    s1 = '06:00'
+    s2 = time
+    s3 = '18:00'
+    FMT = '%H:%M'
+
+
+    tdelta = datetime.strptime(s2, FMT) - datetime.strptime(s1, FMT)
+    res = tdelta.seconds / 240
+    if res <0 or res >180:
+        return "I don't see the sun!"
+    else:
+        return res
+
+# if __name__ == '__main__':
+#     print("Example:")
+#     print(sun_angle("07:00"))
+#
+#     #These "asserts" using only for self-checking and not necessary for auto-testing
+#     assert sun_angle("07:00") == 15
+#     assert sun_angle("01:23") == "I don't see the sun!"
+#     print("Coding complete? Click 'Check' to earn cool rewards!")
 
