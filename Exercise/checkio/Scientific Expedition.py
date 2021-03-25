@@ -53,7 +53,6 @@ def time_converter(time):
 # assert time_converter('09:00') == '9:00 a.m.'
 # assert time_converter('23:15') == '11:15 p.m.'
 
-
 '''
 Sum by type
 '''
@@ -103,31 +102,48 @@ def similar_triangles(cor1,cor2):
 # assert similar_triangles([(1, 0), (1, 2), (2, 0)], [(3, 0), (5, 4), (5, 0)]) is True, 'scaling and reflection'
 # assert similar_triangles([(1, 0), (1, 3), (2, 0)], [(3, 0), (5, 5), (5, 0)]) is False, 'different #2'
 
-
 '''
 unix match
 '''
-
+import re
 def unix_match(filename: str, pattern: str) -> bool:
-    if '*' in pattern:
-        if len(pattern) == 1:
-            return True
-        else:
-            if pattern[0] == '*':
-                if filename.endswith(pattern[1:]):
-                    return True
+    re_pattern = pattern.replace('.', '\.')
+    re_pattern = re_pattern.replace('*', '.*')
+    re_pattern = re_pattern.replace('?', '\S')
+    a = re.search(re_pattern, filename)
+    if a:
+        return True
+    else:
+        return False
 
-    if '?' in pattern:
-        pass
-
-    return False
-
-
-
-# 暂时写不下去了，去学一下re
-assert unix_match('somefile.txt', '*') == True
-assert unix_match('other.exe', '*') == True
-assert unix_match('my.exe', '*.txt') == False
+# assert unix_match('somefile.txt', '*') == True
+# assert unix_match('other.exe', '*') == True
+# assert unix_match('my.exe', '*.txt') == False
 # assert unix_match('log1.txt', 'log?.txt') == True
 # assert unix_match('log12.txt', 'log?.txt') == False
 # assert unix_match('log12.txt', 'log??.txt') == True
+
+'''
+unix_match part 2
+'''
+
+def unix_match2(filename: str, pattern: str) -> bool:
+
+    if filename == pattern:
+        return True
+    re_pattern = pattern.replace('!','^')
+    print(re_pattern)
+    a = re.search(re_pattern,filename)
+    if a:
+        return True
+    else:
+        return False
+
+print(unix_match("nametxt","name[]txt"))
+# assert unix_match2('somefile.txt', 'somefile.txt') == True
+# assert unix_match2('1name.txt', '[!abc]name.txt') == True
+# assert unix_match2('log1.txt', 'log[!0].txt') == True
+# assert unix_match2('log1.txt', 'log[1234567890].txt') == True
+# assert unix_match2('log1.txt', 'log[!1].txt') == False
+
+
