@@ -9,12 +9,24 @@ class Node(object):
         self.value = value
         self.next_node = None
 
-# a = Node(1)
-# b = Node(2)
-# c = Node(3)
-# a.next_node = b
-# b.next_node = c
-#
+    def __len__(self):
+        n = 0
+        icur = self
+        while icur is not None:
+            n += 1
+            icur = icur.next_node
+        return n
+
+
+a = Node(1)
+b = Node(2)
+c = Node(3)
+d = Node(4)
+a.next_node = b
+b.next_node = c
+c.next_node = d
+print(len(a))
+
 # assert a.next_node.value == 2
 
 
