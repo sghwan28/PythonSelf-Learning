@@ -139,7 +139,7 @@ def unix_match2(filename: str, pattern: str) -> bool:
     else:
         return False
 
-print(unix_match("nametxt","name[]txt"))
+# print(unix_match("nametxt","name[]txt"))
 # assert unix_match2('somefile.txt', 'somefile.txt') == True
 # assert unix_match2('1name.txt', '[!abc]name.txt') == True
 # assert unix_match2('log1.txt', 'log[!0].txt') == True
@@ -147,3 +147,20 @@ print(unix_match("nametxt","name[]txt"))
 # assert unix_match2('log1.txt', 'log[!1].txt') == False
 
 
+'''
+Bird Language
+'''
+def translate(phrase):
+    res = ''
+    marker = 0
+    while marker < len(phrase):
+        if phrase[marker] in list('aeiouy'):
+            res += phrase[marker]
+            marker += 3
+        elif phrase[marker] == ' ':
+            res += ' '
+            marker += 1
+        else:
+            res += phrase[marker]
+            marker += 2
+    return res
