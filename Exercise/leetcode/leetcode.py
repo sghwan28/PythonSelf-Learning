@@ -74,3 +74,33 @@ def longestCommonPrefix(strs):
         if i == len(s_min) - 1:
             i = len(s_min)
     return s_min[0:i]
+
+
+'''
+1480. 一位数组动态和,一次遍历
+'''
+def runningSum(nums):
+    res = [nums[0]]
+    for i in range(1, len(nums)):
+        total = res[i - 1] + nums[i]
+        res.append(total)
+    return res
+
+'''
+最大自序和   #动态规划
+'''
+
+
+def maxSubArray(self, nums: List[int]) -> int:
+    dp = [i for i in nums]
+
+    for i in range(len(nums)):
+        memo = [nums[i]]
+        for j in range(i + 1, len(nums)):
+            memo.append(memo[-1] + nums[j])
+            if memo[-1] <= 0:
+                dp[i] = memo[-2]
+                break
+        dp[i] = max(memo)
+
+    return max(dp)
