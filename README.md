@@ -21,13 +21,13 @@ expected = bdg..（总之，第一个字母前移1，第二个前移2，第三�
 只要把index变为 0-25，这个问题就能解决，比如z从25变为26， 26%26 = 0，对应a； y从24变为25,25%26 =25，对应z....
 
 不能通过的测试用例：
-input = y
-expectd： z
-actual： None
+input = y  
+expectd： z  
+actual： None  
 
-input = ax
-expectd：bz
-actual： None
+input = ax  
+expectd：bz  
+actual： None  
 
 虽然最后还是找到了bug并且完全解出了第一题，但是花的时间太多了，而且心态给搞的很烦，直接影响了解第二题。
 
