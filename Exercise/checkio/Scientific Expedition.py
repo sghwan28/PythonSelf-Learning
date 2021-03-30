@@ -1,3 +1,4 @@
+import re
 '''
 Hidden Word
 '''
@@ -164,3 +165,50 @@ def translate(phrase):
             res += phrase[marker]
             marker += 2
     return res
+
+'''
+Caps_lock 
+'''
+def caps_lock(text: str) -> str:
+
+    def tab(status,i):
+        if status == True:
+            return i.upper()
+        if status == False:
+            return i
+
+    tabstatus = False
+    res = text[0]
+    for i in text[1:]:
+        if i.lower() != 'a':
+            res += tab(tabstatus,i)
+        if i.lower() == 'a':
+            if tabstatus == True:
+                tabstatus = False
+            else:
+                tabstatus = True
+    return res
+
+'''
+Remove Brackets
+please review this:
+https://py.checkio.org/en/mission/remove-brackets/ 
+'''
+
+
+
+
+
+
+'''
+find quotes
+'''
+def doit(text):
+    '''
+
+    >>> doit('Regex should return "String 1" or "String 2" or "String3" ')
+    'String 1,String 2,String3'
+    '''
+    matches=re.findall(r'\"(.+?)\"',text)
+    return ",".join(matches)
+
