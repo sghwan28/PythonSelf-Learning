@@ -104,3 +104,22 @@ def maxSubArray(self, nums: List[int]) -> int:
         dp[i] = max(memo)
 
     return max(dp)
+
+
+'''
+80. 删除有序数组中的重复项
+'''
+
+def removeduplicate(nums:list) -> list:
+
+    '''
+    >>> removeduplicate([1,1,1,2,2])
+    [1, 1, 2, 2]
+    '''
+    i = 0
+    for e in nums:
+        if i < 2 or e != nums[i-2]:
+            nums[i] = e
+            i += 1
+
+    return nums[:i]
