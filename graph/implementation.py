@@ -21,7 +21,6 @@ class Vertex:
         return self.connectedTo[nbr]
 
 
-
 class Graph:
     def __init__(self):
         self.vertList = {}
