@@ -123,3 +123,19 @@ def removeduplicate(nums:list) -> list:
             i += 1
 
     return nums[:i]
+
+'''
+807. 保持城市天际线
+'''
+def maxIncreaseKeepingSkyline(grid: List[List[int]]) -> int:
+    hor = [max(i) for i in grid]  # rows
+    ver = [max(i) for i in zip(*grid)]  # columns
+    res = 0
+    row_num = len(grid)
+    col_num = len(grid[0])
+
+    for i in range(row_num):
+        for j in range(col_num):
+            res += min(hor[i], ver[j]) - grid[i][j]
+
+    return res
