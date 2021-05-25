@@ -17,7 +17,7 @@ class BinHeap(object):
         self.heapList =[0]
         self.currentSize = 0
 
-    def percUp(self,i):  #This is to maintain the heap structure after each insertion
+    def percUp(self,i):  # This is to maintain the heap structure after each insertion
         while i // 2 > 0:
             if self.heapList[i] < self.heapList[i // 2]:    # Less than its parent node
                 self.heapList[i],self.heapList[i//2] = self.heapList[i//2], self.heapList[i]

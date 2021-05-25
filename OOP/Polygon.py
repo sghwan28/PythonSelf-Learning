@@ -44,7 +44,7 @@ class Polygon(object):
         return f'Polygon(n={self.n}, R={self.R})'
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
+        if isinstance(other, self.__class__):  # if the type of other is also polygon
             return self.count_edges == other.count_edges and self.circumradius == other.circumradius
         else:
             return NotImplemented
@@ -164,4 +164,4 @@ def test_polygon():
     assert p1 != p4
     assert p4 == p5
 
-test_polygon()
+# test_polygon()

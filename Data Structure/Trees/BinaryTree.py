@@ -8,38 +8,42 @@
 '''
 # Implementing the representation of a tree as a class with nodes and references
 
+
 class BinaryTree(object):
     def __init__(self,root0):
         self.key = root0
         self.leftChild = None
         self.rightChild = None
 
-    def insertLeft(self,newNode):
-        if self.leftChild == None:
+    def insertLeft(self, newNode):
+        if not self.leftChild:
             self.leftChild = BinaryTree(newNode)
         else:
             t = BinaryTree(newNode)        # 此处建议画图自行理解一下！
             t.leftChild = self.leftChild
             self.leftChild = t
 
-    def insertRight(self,newNode):
-        if self.rightChild == None:
+    def insertRight(self, newNode):
+        if not self.rightChild:
             self.rightChild = BinaryTree(newNode)
         else:
             t = BinaryTree(newNode)
             t.rightChild = self.rightChild
             self.rightChild = t
 
-    def getRightChild(self):
+    @property
+    def right_child(self):
         return self.rightChild
 
-    def getLeftChild(self):
+    @property
+    def left_child(self):
         return self.leftChild
 
     def setRootVal(self,obj):
         self.key = obj
 
-    def getRootVal(self):
+    @property
+    def root_val(self):
         return self.key
 
 '''
@@ -61,6 +65,7 @@ class BinaryTree(object):
 '''
 Below is a representation of a Tree using a list of lists. 
 '''
+
 def BinaryTree2(r):
     return [r,[],[]]
 
@@ -92,11 +97,11 @@ def getLeftChild(root):
 def getRightChild(root):
     return root[2]
 
-
-# 尝试运行以下代码
-a = BinaryTree2(0)
-b = insertRight(a,1)
-print(b)
-b = insertLeft(b,1)
-print(b)
-print(getRightChild(b))
+#
+# # 尝试运行以下代码
+# a = BinaryTree2(0)
+# b = insertRight(a,1)
+# print(b)
+# b = insertLeft(b,1)
+# print(b)
+# print(getRightChild(b))
