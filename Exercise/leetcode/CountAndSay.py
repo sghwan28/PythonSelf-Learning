@@ -37,3 +37,4 @@ class Solution:
 
 s = Solution()
 s.countAndSay(3)
+
