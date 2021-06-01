@@ -9,11 +9,10 @@ class Solution:
                 return num
             hashmap[num] = 1
 
-# 不知道为啥哈希表用起来速度飞快…，实在太香了
-
-
 # 思路2：原地交换
 # 有前提条件 题目声明了数组内数字的范围 0到n-1
+
+
 class Solution2:
     def findRepeatNumber(self, nums) -> int:
         for i in range(len(nums)):
