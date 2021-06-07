@@ -190,17 +190,6 @@ def caps_lock(text: str) -> str:
     return res
 
 '''
-Remove Brackets
-please review this:
-https://py.checkio.org/en/mission/remove-brackets/ 
-'''
-
-
-
-
-
-
-'''
 find quotes
 '''
 def doit(text):
