@@ -34,3 +34,29 @@ def largestRectangleArea(heights: List[int]) -> int:
     return maxarea
 
 print(largestRectangleArea([2,1,5,6,2,3]))
+
+
+"""
+leetcode 962
+
+"""
+
+
+def maxWidthRamp(A: List[int]) -> int:
+    stack = []
+    n = len(A)
+    for i in range(n):
+        if not stack or A[stack[-1]] > A[i]:
+            stack.append(i)
+
+    res = 0
+    i = n -1
+    while i > res:
+        while stack and A[stack[-1]] <= A[i]:
+            res = max(res, i - stack[-1])
+            stack.pop()
+        i -= 1
+
+    return res
+
+print(maxWidthRamp([6,0,8,2,1,5]))
