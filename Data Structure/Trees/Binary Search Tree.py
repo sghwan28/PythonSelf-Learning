@@ -48,9 +48,3 @@ class TreeNode:
             self.leftChild.parent = self
         if self.hasRightChild():
             self.rightChild.parent = self
-
-'''
-Note:
-二分查找树暂时先不看了……推迟
-
-'''

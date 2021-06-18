@@ -7,6 +7,7 @@
 
 '''
 # Implementing the representation of a tree as a class with nodes and references
+# 用节点实现一个二叉树
 
 
 class BinaryTree(object):
@@ -63,7 +64,7 @@ class BinaryTree(object):
 # print(r.getRightChild().getRootVal())
 
 '''
-Below is a representation of a Tree using a list of lists. 
+Below is a representation of a Tree using list (不推荐这么写） 
 '''
 
 def BinaryTree2(r):
@@ -77,6 +78,7 @@ def insertLeft(root,newBranch):
         root.insert(1,[newBranch,[],[]])
     return root
 
+
 def insertRight(root,newBranch):
     t = root.pop(2)
     if len(t) > 2:
@@ -85,14 +87,18 @@ def insertRight(root,newBranch):
         root.insert(2,[newBranch,[],[]])
     return root
 
+
 def getRootVal(root):
     return root[0]
+
 
 def seRootVal(root,newVal):
     root[0] = newVal
 
+
 def getLeftChild(root):
     return root[1]
+
 
 def getRightChild(root):
     return root[2]
